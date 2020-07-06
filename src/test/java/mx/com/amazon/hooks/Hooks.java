@@ -23,10 +23,8 @@ public class Hooks
     @Before
     public void before()
     {
-        System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("incognito");
-        driver = new ChromeDriver(options);
+//        System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
+        driver = new ChromeDriver();
 
         driver.manage().timeouts().implicitlyWait(SHORT_WAIT, TimeUnit.SECONDS);
 

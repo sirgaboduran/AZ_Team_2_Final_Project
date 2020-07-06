@@ -1,12 +1,12 @@
 package mx.com.amazon.pages;
 
 import mx.com.amazon.utils.Properties;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage
 {
@@ -30,7 +30,7 @@ public class HomePage extends BasePage
     @FindBy(id = "nav-link-accountList")
     WebElement iniciarSesion;
 
-    @FindBy(xpath = "//div[@id='nav-al-wishlist']/a[1]")
+    @FindBy(xpath = "//span[contains(text(),'Crear una Wish List')]")
     WebElement createWishList;
 
     @FindBy(id = "list-name")
@@ -46,10 +46,12 @@ public class HomePage extends BasePage
 
     {
         driver.get(Properties.URL);
+        driver.manage().window().maximize();
     }
 
     public boolean isAtHomePage()
     {
+        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(campoBusqueda));
         return logoAmazon.isDisplayed() &&
                 holaIdentificate.isDisplayed() &&
                 campoBusqueda.isDisplayed();
@@ -64,10 +66,12 @@ public class HomePage extends BasePage
     {
         action.moveToElement(iniciarSesion).build().perform();
         createWishList.click();
+
     }
 
     public void createWishList(String wishList)
     {
+        wishListName.clear();
         wishListName.sendKeys(wishList);
         createList.click();
     }

@@ -1,6 +1,7 @@
 package mx.com.amazon.pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,19 +17,19 @@ public class WishlistPage extends BasePage
         PageFactory.initElements(this.driver, this);
     }
     
-    @FindBy(id = "profile-list-name")
-    List<WebElement> listNames;
+    @FindBy(css = "[data-action='reg-nav-link'] div div span")
+    List<WebElement> lists;
     
     public boolean isAtWishListPage()
     {
-        return listNames.size() > 0;
+        return lists.size() > 0;
     }
     
     public boolean verifyWishListCreated(String wishList)
     {
-        for(WebElement listName : listNames )
+        for(WebElement list : lists )
         {
-            if (listName.getText().equals(wishList))
+            if (list.getText().equals(wishList))
                 return true;
         }
         return false;

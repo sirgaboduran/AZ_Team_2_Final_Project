@@ -1,10 +1,11 @@
 package mx.com.amazon.pages;
 
-import mx.com.amazon.utils.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductPage extends BasePage
 {
@@ -23,27 +24,26 @@ public class ProductPage extends BasePage
     @FindBy(id = "productTitle")
     WebElement productName;
 
-    @FindBy(id = "priceblock_ourprice")
+    @FindBy(id = "price_inside_buybox")
     WebElement productPrice;
 
     @FindBy(id = "nav-cart-count")
     WebElement cartCount;
+    
+    @FindBy(css = ".a-size-medium.a-text-bold")
+    WebElement addedToCart;
 
     public boolean isAtProductPage()
     {
         return addToCartButton.isDisplayed() && cart.isDisplayed();
     }
-
-    public void storeProductInformation(Product productSelected)
-    {
-        productSelected.setName(productName.getText());
-        productSelected.setPrice(Double.parseDouble(productPrice.getText().substring(1)));
-    }
+    
 
     public boolean addToCart()
     {
         int cartCounter = Integer.parseInt(cartCount.getText());
         addToCartButton.click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(addedToCart));
         return Integer.parseInt(cartCount.getText()) == cartCounter+1;
     }
 

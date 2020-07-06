@@ -9,12 +9,8 @@ import org.junit.runner.RunWith;
         strict = false, plugin = {"pretty",
         "json:target/cucumber_json_reports/FinalProject.json",
         "html:target/FinalProject-html"},
-        glue = {"mex.com.amazon.sites",
-				"mex.com.amazon.pages",
-                "mex.com.amazon.steps",
-                "mex.com.amazon.utils",
-                "mex.com.amazon.hooks"})
+        glue = {"mx.com.amazon.steps",
+                "mx.com.amazon.hooks"})
 
 
-public class AmazonRunner
-{}
+public class AmazonRunner{}

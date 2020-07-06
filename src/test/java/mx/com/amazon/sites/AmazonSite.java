@@ -7,7 +7,6 @@ public class AmazonSite
 {
     private HomePage home;
     private LoginPage login;
-    private CartPage cart;
     private ProductPage product;
     private ResultsPage results;
     private WishlistPage wishlist;
@@ -35,15 +34,7 @@ public class AmazonSite
         }
         return login;
     }
-
-    public CartPage cart()
-    {
-        if(cart == null)
-        {
-            return new CartPage(driver);
-        }
-        return cart;
-    }
+    
 
     public ProductPage product()
     {
