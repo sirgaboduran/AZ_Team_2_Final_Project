@@ -35,11 +35,20 @@ public class AddToCartSteps
         assertTrue("User is at Product Page",amazonSite.product().isAtProductPage());
     }
 
-    @Then("I will add the product to the cart")
+    @And ("I will add the product to the cart")
     public void addToCart()
     {
         amazonSite.product().isAtProductPage();
         assertTrue("Product has been added to cart",amazonSite.product().addToCart());
     }
-    
+
+    @Then ("I will verify the product in the cart")
+    public void verifyProductCart()
+    {
+        amazonSite.product().goToCart();
+        amazonSite.cart().isAtCartPage();
+
+    }
+
+
 }

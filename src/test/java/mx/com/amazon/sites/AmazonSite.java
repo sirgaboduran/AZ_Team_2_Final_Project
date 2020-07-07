@@ -10,6 +10,7 @@ public class AmazonSite
     private ProductPage product;
     private ResultsPage results;
     private WishlistPage wishlist;
+    private CartPage cart;
     private WebDriver driver;
 
     public AmazonSite(WebDriver driver)
@@ -30,7 +31,7 @@ public class AmazonSite
     {
         if(login == null)
         {
-            return new LoginPage(driver);
+            login = new LoginPage(driver);
         }
         return login;
     }
@@ -40,7 +41,7 @@ public class AmazonSite
     {
         if(product == null)
         {
-            return new ProductPage(driver);
+            product = new ProductPage(driver);
         }
         return product;
     }
@@ -49,7 +50,7 @@ public class AmazonSite
     {
         if(results == null)
         {
-            return new ResultsPage(driver);
+            results = new ResultsPage(driver);
         }
         return results;
     }
@@ -58,8 +59,17 @@ public class AmazonSite
     {
         if(wishlist == null)
         {
-            return new WishlistPage(driver);
+            wishlist = new WishlistPage(driver);
         }
         return wishlist;
+    }
+
+    public CartPage cart()
+    {
+        if(cart == null)
+        {
+            cart = new CartPage(driver);
+        }
+        return cart;
     }
 }
