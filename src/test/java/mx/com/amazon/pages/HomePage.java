@@ -51,7 +51,7 @@ public class HomePage extends BasePage
 
     public boolean isAtHomePage()
     {
-        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(campoBusqueda));
+        new WebDriverWait(driver, Properties.LONG_WAIT).until(ExpectedConditions.visibilityOf(campoBusqueda));
         return logoAmazon.isDisplayed() &&
                 holaIdentificate.isDisplayed() &&
                 campoBusqueda.isDisplayed();

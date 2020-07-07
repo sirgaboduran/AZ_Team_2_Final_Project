@@ -29,7 +29,7 @@ public class LoginPage extends BasePage
 
     public boolean isAtLoginPage()
     {
-        
+        wait.until(ExpectedConditions.visibilityOf(userNameTextBox));
         return userNameTextBox.isDisplayed() &&
                 continueButton.isDisplayed();
     }

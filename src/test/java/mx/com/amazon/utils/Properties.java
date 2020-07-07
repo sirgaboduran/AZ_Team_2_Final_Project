@@ -10,4 +10,5 @@ public class Properties
     public static final String WISH_LIST = "Test";
 
     public static final int SHORT_WAIT = 15;
+    public static final long LONG_WAIT = 60;
 }

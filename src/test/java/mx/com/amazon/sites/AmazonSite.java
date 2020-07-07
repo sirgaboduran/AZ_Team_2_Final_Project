@@ -21,7 +21,7 @@ public class AmazonSite
     {
         if(home == null)
         {
-            return new HomePage(driver);
+            home = new HomePage(driver);
         }
         return home;
     }

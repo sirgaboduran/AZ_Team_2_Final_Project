@@ -7,3 +7,4 @@ Feature: Create a wish list
     Then I will create a wish list
     And Verify it was created
 
+#resumir en un solo paso la creacion del wishlist
